@@ -17,71 +17,71 @@ public class iterative {
         System.out.print(node.val+" ");
     }
     /**
-     * 递归先序遍历
+     * ??????????
      * */
     public void preOrderRecursion(TreeNode node){
-        if(node==null) //如果结点为空则返回
+        if(node==null) //????????????
             return;
-        visit(node);//访问根节点
-        preOrderRecursion(node.left);//访问左孩子
-        preOrderRecursion(node.right);//访问右孩子
+        visit(node);//????????
+        preOrderRecursion(node.left);//????????
+        preOrderRecursion(node.right);//?????????
     }
     /**
-     * 非递归先序遍历二叉树
+     * ?????????????????
      * */
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> resultList=new ArrayList<>();
         Stack<TreeNode> treeStack=new Stack<>();
-        if(root==null) //如果为空树则返回
+        if(root==null) //???????????
             return resultList;
         treeStack.push(root);
         while(!treeStack.isEmpty()){
             TreeNode tempNode=treeStack.pop(); 
             if(tempNode!=null){
-                resultList.add(tempNode.val);//访问根节点
-                treeStack.push(tempNode.right); //入栈右孩子
-                treeStack.push(tempNode.left);//入栈左孩子
+                resultList.add(tempNode.val);//????????
+                treeStack.push(tempNode.right); //????????
+                treeStack.push(tempNode.left);//???????
             }
         }
         return resultList;
     }
     /**
-     * 递归中序遍历
+     * ??????????
      * */
     public void preOrderRecursion(TreeNode node){
-        if(node==null) //如果结点为空则返回
+        if(node==null) //????????????
             return;
-        preOrderRecursion(node.left);//访问左孩子
-        visit(node);//访问根节点
-        preOrderRecursion(node.right);//访问右孩子
+        preOrderRecursion(node.left);//????????
+        visit(node);//????????
+        preOrderRecursion(node.right);//?????????
     }
     /**
-     * 非递归中序遍历
+     * ???????????
      * */
     public List<Integer> inorderTraversalNonCur(TreeNode root) {
         List<Integer> visitedList=new ArrayList<>();
-        Map<TreeNode,Integer> visitedNodeMap=new HashMap<>();//保存已访问的节点
-        Stack<TreeNode> toBeVisitedNodes=new Stack<>();//待访问的节点
+        Map<TreeNode,Integer> visitedNodeMap=new HashMap<>();//????????????
+        Stack<TreeNode> toBeVisitedNodes=new Stack<>();//?????????
         if(root==null)
             return visitedList;
         toBeVisitedNodes.push(root);
         while(!toBeVisitedNodes.isEmpty()){
-            TreeNode tempNode=toBeVisitedNodes.peek(); //注意这里是peek而不是pop
-            while(tempNode.left!=null){ //如果该节点的左节点还未被访问，则需先访问其左节点
-                if(visitedNodeMap.get(tempNode.left)!=null) //该节点已经被访问（不存在某个节点已被访问但其左节点还未被访问的情况）
+            TreeNode tempNode=toBeVisitedNodes.peek(); //?????????peek??????pop
+            while(tempNode.left!=null){ //???????????????????????????????????
+                if(visitedNodeMap.get(tempNode.left)!=null) //?????????????????????????????????????????????????????
                     break;
                 toBeVisitedNodes.push(tempNode.left);
                 tempNode=tempNode.left;
             }
-            tempNode=toBeVisitedNodes.pop();//访问节点
+            tempNode=toBeVisitedNodes.pop();//??????
             visitedList.add(tempNode.val);
-            visitedNodeMap.put(tempNode, 1);//将节点加入已访问map
-            if(tempNode.right!=null) //将右结点入栈
+            visitedNodeMap.put(tempNode, 1);//?????????????map
+            if(tempNode.right!=null) //?????????
                 toBeVisitedNodes.push(tempNode.right);
         }
         return visitedList;
     }
-    //更简洁
+    //?????
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<Integer>();
 
@@ -101,18 +101,18 @@ public class iterative {
         return list;
     }
     /**
-     * 递归后序遍历
+     * ?????????
      * */
     public void postOrderRecursion(TreeNode node){
-        if(node==null) //如果结点为空则返回
+        if(node==null) //????????????
             return;
-        preOrderRecursion(node.left);//访问左孩子
+        preOrderRecursion(node.left);//????????
        
-        preOrderRecursion(node.right);//访问右孩子 
-        visit(node);//访问根节点
+        preOrderRecursion(node.right);//????????? 
+        visit(node);//????????
     }
     /**
-     * 非递归后序遍历
+     * ??????????
      * */
     public List<Integer> postOrderNonCur(TreeNode root){
         List<Integer> resultList=new ArrayList<>();
@@ -122,37 +122,37 @@ public class iterative {
         Stack<TreeNode> toBeVisitedStack=new Stack<>();
         toBeVisitedStack.push(root);
         while(!toBeVisitedStack.isEmpty()){
-            TreeNode tempNode=toBeVisitedStack.peek(); //注意这里是peek而不是pop
-            if(tempNode.left==null && tempNode.right==null){ //如果没有左右孩子则访问
+            TreeNode tempNode=toBeVisitedStack.peek(); //?????????peek??????pop
+            if(tempNode.left==null && tempNode.right==null){ //??????????????????
                 resultList.add(tempNode.val);
                 visitedMap.put(tempNode, 1);
                 toBeVisitedStack.pop();
                 continue;
             }else if(!((tempNode.left!=null&&visitedMap.get(tempNode.left)==null )|| (tempNode.right!=null && visitedMap.get(tempNode.right)==null))){
-                //如果节点的左右孩子均已被访问            
+                //??????????????????????            
                 resultList.add(tempNode.val);
                 toBeVisitedStack.pop();
                 visitedMap.put(tempNode, 1);
                 continue;
             }
             if(tempNode.left!=null){
-                while(tempNode.left!=null && visitedMap.get(tempNode.left)==null){//左孩子没有被访问
+                while(tempNode.left!=null && visitedMap.get(tempNode.left)==null){//????????????
                     toBeVisitedStack.push(tempNode.left);
                     tempNode=tempNode.left;
                 }
             }
             if(tempNode.right!=null){
-                if(visitedMap.get(tempNode.right)==null){//右孩子没有被访问
+                if(visitedMap.get(tempNode.right)==null){//?????????????
                     toBeVisitedStack.push(tempNode.right);
                 }               
             }
         }
         return resultList;
     }
-    // 层序遍历
+    // ???????
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> resultList=new ArrayList<>();
-        int levelNum=0;//记录某层具有多少个节点
+        int levelNum=0;//????????????????
         Queue<TreeNode> treeQueue=new LinkedList<>();
         treeQueue.add(root);
         while(!treeQueue.isEmpty()){

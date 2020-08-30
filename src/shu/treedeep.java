@@ -16,9 +16,9 @@ public class treedeep {
             return 1+java.lang.Math.max(maxDepth(root.left),maxDepth(root.right));
     }
     //////////////////////////////////////////////////////////////////////
-    //Æ½ºâ¶þ²æÊ÷110£¬¸ß¶ÈÏà²î²»³¬¹ý1
-    //½áºÏdeep·½·¨£¬ÓÐ×Ô¶¥ÏòÏÂºÍ×ÔÏÂÏòÉÏ
-    //×Ô¶¥ÏòÏÂ 1
+    //Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½110ï¿½ï¿½ï¿½ß¶ï¿½ï¿½ï¿½î²»ï¿½ï¿½ï¿½ï¿½1
+    //ï¿½ï¿½ï¿½deepï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Âºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ 1
     public boolean isBalanced1(TreeNode root) {
         
         if(root == null)
@@ -38,7 +38,7 @@ public class treedeep {
         else
             return Math.max(height(root.left),height(root.right))+1;
     }
-    //×Ôµ×ÏòÉÏ2
+    //ï¿½Ôµï¿½ï¿½ï¿½ï¿½ï¿½2
     private boolean result = true;
 
     public boolean isBalanced2(TreeNode root) {
@@ -54,8 +54,8 @@ public class treedeep {
         return 1 + Math.max(l, r);
     }
     //////////////////////////////////////////////////////////////////////
-    //543Â·¾¶µÄÖ±¾¶£¬×óÓÒ×ÓÊ÷Â·¾¶µÄ×î´óÖµ£¬Éî¶È¸Ä±à
-    private int num=0;//¼ÇÂ¼×óÓÒ×ÓÊ÷Ö®ºÍµÄ×î´óÖµ
+    //543Â·ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½È¸Ä±ï¿½
+    private int num=0;//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½Íµï¿½ï¿½ï¿½ï¿½Öµ
     public int diameterOfBinaryTree(TreeNode root) {
     	
     	deepth2(root);
@@ -73,8 +73,8 @@ public class treedeep {
     		
     	}
     ///////////////////////////////////////////////////////////////
-    //226·­×ª¶þ²æÊ÷
-    //ÖÐÐò±éÀú·ÃÎÊ£¬´ÓÏÂµ½ÉÏ·´×ª
+    //226ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½Ï·ï¿½×ª
     public TreeNode invertTree(TreeNode root) {
     	if(root == null) return root;
     	TreeNode l = root.left;
@@ -83,25 +83,25 @@ public class treedeep {
     	return root;
 
     }
-    //617 ºÏ²¢Ê÷
+    //617 ï¿½Ï²ï¿½ï¿½ï¿½
     public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
     	if(t1 == null) return t2;
     	if(t2 == null ) return t1;
     	if(t1==null && t2 ==null) return null;
     	t1.left = mergeTrees(t1.left,t2.left);
     	t1.right= mergeTrees(t1.right,t2.right);
-    	t1.val += t2.val; //µ±Ç°½áµãÖµÏà¼Ó
-    	return t1;			//·½·¨ÊÇÉ¶ÀàÐÍ·µ»ØÉ¶
+    	t1.val += t2.val; //ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½
+    	return t1;			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½É¶
 
     }
-    //112 Â·¾­×ÜºÍ µÝ¹é
+    //112 Â·ï¿½ï¿½ï¿½Üºï¿½ ï¿½Ý¹ï¿½
     public boolean hasPathSum(TreeNode root, int sum) {
     	if(root == null) return false;
     	if(root.val == sum && root.left ==null && root.right == null) return true;
     	return hasPathSum(root.left,sum-root.val)||hasPathSum(root.right,sum-root.val);
 
     }
-    //437 Â·¾¶×ÜºÍ
+    //437 Â·ï¿½ï¿½ï¿½Üºï¿½
     public int pathSum(TreeNode root, int sum) {
     	if (root == null) return 0;
     	return getnum(root,sum)+pathSum(root.left,sum)+pathSum(root.right,sum);
